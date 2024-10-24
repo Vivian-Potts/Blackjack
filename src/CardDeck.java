@@ -1,12 +1,13 @@
 import java.util.Random;
+import java.util.Scanner;
 public class CardDeck {
     Random rand = new Random();
-
+    Scanner scan = new Scanner(System.in);
     //Make our deck, first digit in each array is the amount of cards left, value on right is the value of that card when played in blackjack
     int[][] cards = {{4,2},{4,3},{4,4},{4,5},{4,6},{4,7},{4,8},{4,9},{16,10},{4,123456789}};
     int total;
 
-    int deal() {
+    int deal(boolean isPlayer) {
         //Reset variables from last time
         total = 0;
         int cardPosition = 0;
@@ -23,6 +24,19 @@ public class CardDeck {
         for (int i = 0; i < cards.length; i++) {
             if (cardPosition < cards[i][0]){
                 cards[i][0]--;
+                if (cards[i][1] == 123456789 && isPlayer) {
+
+                    while(true){
+                        System.out.print("Drew ace, would you like it to be 1 or 11? [1/11]");
+                        String ace = scan.nextLine();
+                        if(ace.equals("11")){
+                            return  11;
+                        }
+                        if (ace.equals("1")){
+                            return 1;
+                        }
+                    }
+                }
                 return cards[i][1];
             } else {
                 cardPosition -= cards[i][0];
