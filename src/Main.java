@@ -74,7 +74,7 @@ public class Main {
              //IDK WHY WE NEED THIS BUT WE DO
             decision = scan.next();
 
-            decision = decision.toLowerCase(Locale.ROOT);
+            decision = decision.toLowerCase();//Locale.ROOT);
             //System.out.println("After Scan");
             if (decision.equals("h")) {
                 firstTurn = false;
@@ -168,7 +168,7 @@ public class Main {
 
         //Check who won
         if (playerHand == dealerHand) {
-            System.out.println("Push, Money returned without change");
+            System.out.println("Pu4sh, Money returned without change");
             return credits;
         } else if(bust || playerHand <= dealerHand && !dealerBust){
             System.out.println("Game Lost, " + bet + " credits subtracted");
